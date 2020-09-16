@@ -12,6 +12,13 @@ jobs:
     if: github.ref == 'refs/heads/master' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
     steps:
     - uses: actions/checkout@v1
+#     - name: Annotation - start of deployment
+#       uses: jdmevo123/akamai-mpulse-annotation-action@1.0
+#       with:
+#         Auth-Token: ${{ secrets.AKAMAI_MPULSEAPITOKEN }} 
+#         title: ${{ github.event.repository.name }} - Build:${{ github.run_number }}
+#         text: ${{ toJson(github.event.head_commit.message) }}
+#         tennant: ""
     - name: Build and Deploy
       uses: jdmevo123/akamai-jekyll-netstorage-action@1.0
       env:
@@ -20,3 +27,12 @@ jobs:
         uploadDirectory: '886532'
         path: '_site'
         domainName: 'akamaidemo1'
+#     - name: Clear Cache
+#       uses: jdmevo123/akamai-purge-action@1.7
+#       env:
+#         EDGERC: ${{ secrets.EDGERC }}
+#       with:
+#         command: 'invalidate' 
+#         type: 'cpcode' #valid inputs are 'cpcode', 'url' and 'tag'
+#         ref: '12345' #input url's as 'https://www.example.com/ https://www.example1.com/'
+#         network: 'production'
