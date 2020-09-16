@@ -17,4 +17,6 @@ jobs:
       env:
         AKAMAI_PRIVATEKEY: ${{ secrets.AKAMAI_PRIVATEKEY }}
       with:
-        cpcode: 'xxxx'
+        uploadDirectory: '886532'
+        path: '_site'
+        domainName: 'akamaidemo2020'
