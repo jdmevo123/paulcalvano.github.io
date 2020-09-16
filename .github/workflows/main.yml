@@ -9,7 +9,6 @@ on:
 jobs:
   production-deploy:
     runs-on: ubuntu-latest
-    # needs: [test]
     if: github.ref == 'refs/heads/master' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
     steps:
     - uses: actions/checkout@v1
@@ -17,8 +16,5 @@ jobs:
       uses: jdmevo123/akamai-jekyll-netstorage-action@1.0
       env:
         EDGERC: ${{ secrets.EDGERC }}
-      #with:
-      #  command: 'invalidate' 
-      #  type: 'cpcode' #valid inputs are 'cpcode', 'url' and 'tag'
-      #  ref: '930571' #input url's as 'https://www.example.com/ https://www.example1.com/'
-      #  network: 'production'
+      with:
+        cpcode: 'xxxx'
