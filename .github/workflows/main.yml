@@ -19,4 +19,4 @@ jobs:
       with:
         uploadDirectory: '886532'
         path: '_site'
-        domainName: 'akamaidemo2020'
+        domainName: 'akamaidemo1'
