@@ -15,6 +15,6 @@ jobs:
     - name: Build and Deploy
       uses: jdmevo123/akamai-jekyll-netstorage-action@1.0
       env:
-        EDGERC: ${{ secrets.EDGERC }}
+        AKAMAI_PRIVATEKEY: ${{ secrets.AKAMAI_PRIVATEKEY }}
       with:
         cpcode: 'xxxx'
